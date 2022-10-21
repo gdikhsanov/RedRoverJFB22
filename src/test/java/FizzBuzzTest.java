@@ -4,12 +4,12 @@ import org.testng.annotations.Test;
 public class FizzBuzzTest {
     //1. Positve testing Happy path
     // if start <= end
-    // return rray
+    // return array
 
     @Test
     public void testStartLessThenEnd_HappyPath() {
         //AAA
-        //arrage
+        //arrange
         int start = 1;
         int end = 20;
         String[] expectedResult = {"1", "2", "Fizz", "4", "Buzz", "Fizz", "7", "8", "Fizz", "Buzz", "11", "Fizz", "13",
@@ -25,7 +25,7 @@ public class FizzBuzzTest {
     @Test
     public void testStartLessThenEndNegative_HappyPath() {
         //AAA
-        //arrage
+        //arrange
         int start = -20;
         int end = -1;
         String[] expectedResult = {"Buzz", "-19", "Fizz", "-17", "-16", "FizzBuzz", "-14", "-13", "Fizz",
@@ -41,7 +41,7 @@ public class FizzBuzzTest {
     @Test
     public void testStartEqualsEnd_HappyPath() {
         //AAA
-        //arrage
+        //arrange
         int start = 1;
         int end = 1;
         String[] expectedResult = {"1" };
@@ -60,7 +60,7 @@ public class FizzBuzzTest {
     @Test
     public void testStartGreaterTenEnd_Negative() {
         //AAA
-        //arrage
+        //arrange
         int start = 20;
         int end = 1;
         String[] expectedResult = {};
