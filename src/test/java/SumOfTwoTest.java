@@ -56,6 +56,30 @@ public class SumOfTwoTest {
         Assert.assertEquals(actualResult, expectedResult);
     }
 
+    @Test
+    public void testArrOfOne_Negative() {
 
+        int[] a = {1}; //Нет пар элементов
+        int n = 1;
+
+        Object[] expectedResult =  {}; // Ноль элементов в массиве объектов
+
+        Object[] actualResult = SumOfTwo.sumOfTwo(a, n);
+
+        Assert.assertEquals(actualResult, expectedResult);
+    }
+
+    @Test
+    public void testEmptyArr_Negative() {
+
+        int[] a = {};
+        int n = 0;
+
+        Object[] expectedResult =  {}; // Ноль элементов в массиве объектов
+
+        Object[] actualResult = SumOfTwo.sumOfTwo(a, n);
+
+        Assert.assertEquals(actualResult, expectedResult);
+    }
 }
 

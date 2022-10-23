@@ -1,5 +1,7 @@
 package project_utils;
 
+import java.util.Arrays;
+
 public class Utils {
 
     public static boolean isEven(int number) {
@@ -10,7 +12,7 @@ public class Utils {
         for (int i : arr
         ) {
             if (i == a) {
-            return true;
+                return true;
             }
         }
         return false;
@@ -41,5 +43,84 @@ public class Utils {
         return arr;
     }
 
+    public static int countEvenInArray(int[] arr) {
 
+        if (arr == null || arr.length == 0) {
+            return -1;
+        }
+
+        int count = 0;
+        for (int i : arr
+        ) {
+            if (i % 2 == 0) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public static int countOddInArray(int[] arr) {
+
+        if (arr == null || arr.length == 0) {
+            return -1;
+        }
+
+        int count = 0;
+        for (int i : arr
+        ) {
+            if (i % 2 != 0) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public static int[] evenArray(int[] arr) {
+
+        int[] resultArr = new int[countEvenInArray(arr)];
+        int resultArrIndex = 0;
+
+        for (int i : arr
+        ) {
+            if (i % 2 == 0) {
+                resultArr[resultArrIndex] = i;
+                resultArrIndex++;
+            }
+        }
+        return resultArr;
+    }
+
+    public static int[] oddArray(int[] arr) {
+
+        int[] resultArr = new int[countOddInArray(arr)];
+        int resultArrIndex = 0;
+
+        for (int i : arr
+        ) {
+            if (i % 2 != 0) {
+                resultArr[resultArrIndex] = i;
+                resultArrIndex++;
+            }
+        }
+        return resultArr;
+    }
+
+    public static int[] randomArrayInt(int from, int to, int length) {
+
+        from = Math.abs(from);
+        to = Math.abs(to);
+        length = Math.abs(length);
+
+        int[] resultArr = new int[length];
+
+        for (int i = 0; i < length; i++) {
+            resultArr[i] = (int)(Math.random() * (to - from + 1)) + from;
+        }
+
+        return resultArr;
+    }
+
+//    public static void main(String[] args) {
+//        System.out.println(Arrays.toString(randomArrayInt(1, 5, 10)));
+//    }
 }

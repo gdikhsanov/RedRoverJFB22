@@ -20,7 +20,7 @@ public class MinMaxAveTest {
         Assert.assertEquals(actualResult, expectedResult);
     }
     @Test
-    public void testNegativeInd_HappyPath() {
+    public void testNegativeInd_Negative() {
         //AAA
         //arrange
         int[] arr = new int[]{1, 2, 3, 4, 5, 6, 7, 8};

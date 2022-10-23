@@ -2,7 +2,7 @@ public class MinMaxAve {
 
     public static int[] minMaxAve(int[] arr, int a, int b) {
 
-        if (a >= 0 && a < arr.length && b >= 0 && b < arr.length) {
+        if (a >= 0 && a < arr.length && b >= 0 && b < arr.length) { //добавить null
 
             if (a > b) {
                 int n;

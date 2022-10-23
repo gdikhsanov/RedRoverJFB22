@@ -6,7 +6,7 @@ public class IntersectionTest {
     @Test
     public void testPositiveNum_HappyPath() {
 
-        int[] a = {1, 2, 4, 5, 89};
+        int[] a = {1, 2, 2, 4, 5, 89};
         int[] b = {8, 9, 4, 2};
 
         int[] expectedResult = {2, 4};

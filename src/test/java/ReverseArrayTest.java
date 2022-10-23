@@ -18,16 +18,13 @@ public class ReverseArrayTest {
     @Test
     public void testEmptyArr_Negative() {
 
-        int[] a = {};
+        int[] a = {1};
 
-        int[] expectedResult =  {};
+        int[] expectedResult =  {1};
 
         int[]  actualResult = ReverseArray.reverseArray(a);
 
         Assert.assertEquals(actualResult, expectedResult);
     }
-
-
-
 }
 

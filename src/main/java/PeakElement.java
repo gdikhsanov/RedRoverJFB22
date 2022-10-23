@@ -2,6 +2,12 @@ public class PeakElement {
 
     public static int[] peakElement(int[] arr) {
 
+        if (arr == null || arr.length == 0) {
+            return new int[0];
+        } else if (arr.length == 1) {
+            return new int[]{arr[0]};
+        }
+
         int count = 0;
 
         for (int i = 0; i < arr.length; i++) {

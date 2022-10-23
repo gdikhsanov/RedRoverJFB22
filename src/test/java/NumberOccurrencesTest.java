@@ -6,9 +6,9 @@ public class NumberOccurrencesTest {
     @Test
     public void test_HappyPath() {
 
-        int[] a = {3, 2, 5, 3, 1, 5, 4, 2, 1, 4, 5, 3, 2, 1, 4, 5, 3, 2, 1};
+        int[] a = {3, 2, 5, 3, 22, 1, 5, 4, 2, 1, 4, 5, 3, 2, 1, 4, 5, 3, 2, 1};
 
-        Object[] expectedResult =  {new int[]{1, 4}, new int[]{2, 4}, new int[]{3, 4}, new int[]{4, 3}, new int[]{5, 4}};
+        Object[] expectedResult =  {new int[]{1, 4}, new int[]{2, 4}, new int[]{3, 4}, new int[]{4, 3}, new int[]{5, 4}, new int[]{22, 1}};
 
         Object[] actualResult = NumberOccurrences.numberOccurrences(a);
 
@@ -16,7 +16,7 @@ public class NumberOccurrencesTest {
     }
 
     @Test
-    public void testNegative_HappyPath() {
+    public void testNegativeNum_HappyPath() {
 
         int[] a = {3, 2, -5, 3, 1, -5, 4, 2, 1, 4, 5, 3, 2, 1, 4, 5, 3, 2, 1};
 
@@ -39,6 +39,17 @@ public class NumberOccurrencesTest {
         Assert.assertEquals(actualResult, expectedResult);
     }
 
+    @Test
+    public void testArrOfOne_HappyPath() {
+
+        int[] a = {3};
+
+        Object[] expectedResult =  {new int[]{3, 1}};
+
+        Object[] actualResult = NumberOccurrences.numberOccurrences(a);
+
+        Assert.assertEquals(actualResult, expectedResult);
+    }
 
 
 }
