@@ -1,7 +1,47 @@
 public class CountryCodes {
-    public static String countryCodes(int[] arr){
 
-        String[][] codes = new String[][]{
+    public static String[] getPhoneNumberAndCountry(int[] arr) { //({1, 8, 0, 0, 1, 2, 3, 4, 5, 6, 7})
+                                                                // -> {“1(800)123-45-67”, “USA”}
+        if (arr == null || arr.length != 11) {
+            return new String[]{"Error"}; //"Phone length error"
+        }
+
+        for (int i:arr
+             ) {
+            if (i>9||i<0) {
+                return new String[]{"Error"}; // "Phone digits error"
+            }
+        }
+
+        String first5 = "" + arr[0] + arr[1] + arr[2] + arr[3] + arr[4];
+        String first4 = "" + arr[0] + arr[1] + arr[2] + arr[3];
+        String first3 = "" + arr[0] + arr[1] + arr[2];
+        String first2 = "" + arr[0] + arr[1];
+        String first1 = "" + arr[0];
+
+        String resultCountry = "Error"; //"No country match with this country code";
+
+        if (!countryByCode(first5).equals("")) {
+            resultCountry = countryByCode(first5);
+        } else if (!countryByCode(first4).equals("")) {
+            resultCountry = countryByCode(first4);
+        } else if (!countryByCode(first3).equals("")) {
+            resultCountry = countryByCode(first3);
+        } else if (!countryByCode(first2).equals("")) {
+            resultCountry = countryByCode(first2);
+        } else if (!countryByCode(first1).equals("")) {
+            resultCountry = countryByCode(first1);
+        }
+
+        String resultNumber = arr[0] + "(" + arr[1] + arr[2] + arr[3] + ")" + arr[4] + arr[5] + arr[6]
+                + "-" + arr[7] + arr[8] + "-" + arr[9] + arr[10];
+
+        return new String[]{resultNumber, resultCountry};
+    }
+
+    public static String countryByCode(String s) {
+
+        String[][] codesArr = new String[][]{
                 {"1204", "Canada"},
                 {"1226", "Canada"},
                 {"1236", "Canada"},
@@ -307,7 +347,14 @@ public class CountryCodes {
                 {"996", "Kyrgyz Republic"},
                 {"998", "Uzbekistan"}};
 
-        return "Юху";
+        for (int i = 0; i < codesArr.length; i++) {
+            if (s.equals(codesArr[i][0])) {
+
+                return codesArr[i][1];
+            }
+        }
+
+        return "";
     }
 }
 

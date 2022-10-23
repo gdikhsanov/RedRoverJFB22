@@ -93,6 +93,79 @@ public class CreateArrayTest {
         Assert.assertEquals(actualResult, expectedResult);
     }
 
+    //Arrays 3.1
+
+    @Test
+    public void testGetPhoneNumberAndCountry_USA_HappyPath() {
+
+         int[] arr = new int[]{1, 8, 0, 0, 1, 2, 3, 4, 5, 6, 7};
+
+        String[] expectedResult = {"1(800)123-45-67", "United States of America"};
+
+        String[] actualResult = CreateArray.getPhoneNumberAndCountry(arr);
+
+        Assert.assertEquals(actualResult, expectedResult);
+    }
+
+    @Test
+    public void testGetPhoneNumberAndCountry_Canada_HappyPath() {
+
+         int[] arr = new int[]{1, 8, 0, 7, 1, 2, 3, 4, 5, 6, 7};
+
+        String[] expectedResult = {"1(807)123-45-67", "Canada"};
+
+        String[] actualResult = CreateArray.getPhoneNumberAndCountry(arr);
+
+        Assert.assertEquals(actualResult, expectedResult);
+    }
+
+    @Test
+    public void testGetPhoneNumberAndCountry_Kazakhstan_HappyPath() {
+
+         int[] arr = new int[]{7, 7, 7, 7, 1, 2, 3, 4, 5, 6, 7};
+
+        String[] expectedResult = {"7(777)123-45-67", "Kazakhstan"};
+
+        String[] actualResult = CreateArray.getPhoneNumberAndCountry(arr);
+
+        Assert.assertEquals(actualResult, expectedResult);
+    }
+
+    @Test
+    public void testGetPhoneNumberAndCountry_Russia_HappyPath() {
+
+         int[] arr = new int[]{7, 9, 1, 3, 9, 2, 3, 4, 5, 6, 7};
+
+        String[] expectedResult = {"7(913)923-45-67", "Russia"};
+
+        String[] actualResult = CreateArray.getPhoneNumberAndCountry(arr);
+
+        Assert.assertEquals(actualResult, expectedResult);
+    }
+
+    @Test
+    public void testGetPhoneNumberAndCountry_OutOfBounds_Negative() {
+
+         int[] arr = new int[]{99, 9, 1, 3, 9, 2, 3, 4, 5, 6, 7};
+
+        String[] expectedResult = {"Error"};
+
+        String[] actualResult = CreateArray.getPhoneNumberAndCountry(arr);
+
+        Assert.assertEquals(actualResult, expectedResult);
+    }
+
+    @Test
+    public void testGetPhoneNumberAndCountry_SmallArr_Negative() {
+
+         int[] arr = new int[]{9, 7};
+
+        String[] expectedResult = {"Error"};
+
+        String[] actualResult = CreateArray.getPhoneNumberAndCountry(arr);
+
+        Assert.assertEquals(actualResult, expectedResult);
+    }
 
 }
 
