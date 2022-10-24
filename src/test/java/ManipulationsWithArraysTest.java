@@ -66,7 +66,7 @@ public class ManipulationsWithArraysTest {
     }
 
     @Test
-    public void testGetTheGreaterHalf_EmptyArr_HappyPath() {
+    public void testGetTheGreaterHalf_EmptyArr_Negative() {
 
         int[] a = {};
 
@@ -78,7 +78,7 @@ public class ManipulationsWithArraysTest {
     }
 
     @Test
-    public void testGetTheGreaterHalf_NullArr_HappyPath() {
+    public void testGetTheGreaterHalf_NullArr_Negative() {
 
         int[] a = null;
 

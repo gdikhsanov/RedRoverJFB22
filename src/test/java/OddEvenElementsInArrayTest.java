@@ -67,6 +67,7 @@ public class OddEvenElementsInArrayTest {
 //        int to = 5;
 //        int length = 10;
 
+
         int[] arr = {4, 4, 4, 2, 1, 2, 5, 3, 4, 2}/*Utils.randomArrayInt(from, to, length)*/;
 
         int[][] expectedResult = {{4, 4, 4, 2, 2, 4, 2}, {1, 5, 3}};

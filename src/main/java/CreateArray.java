@@ -14,7 +14,7 @@ public class CreateArray {
     //Arrays 2.1.1
 
 
-    public static int[] createIntArrayFromText(String s) {
+    public static int[] createIntArrayFromText(String s) { // Дописать валидацию на не цифры
         if (s == null || s.equals("")) {
             return new int[0];
         }
@@ -48,13 +48,13 @@ public class CreateArray {
 
     //Arrays 3.1
 
-    public static void main(String[] args) {
-        System.out.println(Arrays.toString(getPhoneNumberAndCountry(new int[]{1, 8, 0, 0, 1, 2, 3, 4, 5, 6, 7})));
-    }
+//    public static void main(String[] args) {
+//        System.out.println(Arrays.toString(getPhoneNumberAndCountry(new int[]{1, 8, 0, 0, 1, 2, 3, 4, 5, 6, 7})));
+//    }
 
     public static String[] getPhoneNumberAndCountry(int[] arr) { //({1, 8, 0, 0, 1, 2, 3, 4, 5, 6, 7})
-        // -> {“1(800)123-45-67”, “USA”}
-        if (arr == null || arr.length != 11) {
+                                                                     // -> {“1(800)123-45-67”, “USA”}
+        if (arr == null || arr.length < 11 || arr.length > 15) {
             return new String[]{"Error"}; //"Phone length error"
         }
 
@@ -85,8 +85,36 @@ public class CreateArray {
             resultCountry = countryByCode(first1);
         }
 
-        String resultNumber = arr[0] + "(" + arr[1] + arr[2] + arr[3] + ")" + arr[4] + arr[5] + arr[6]
+        String resultNumber;
+        resultNumber = arr[0] + "(" + arr[1] + arr[2] + arr[3] + ")" + arr[4] + arr[5] + arr[6]
                 + "-" + arr[7] + arr[8] + "-" + arr[9] + arr[10];
+
+        if (arr.length == 11) {
+            resultNumber = "x(xxx)xxx-xx-xx";
+            for (int n : arr) {
+                resultNumber = resultNumber.replaceFirst("x", n + "");
+            }
+        } else if (arr.length == 12) {
+            resultNumber = "x(xxx)xxx-xx-xxx";
+            for (int n : arr) {
+                resultNumber = resultNumber.replaceFirst("x", n + "");
+            }
+        } else if (arr.length == 13) {
+            resultNumber = "x(xxx)xxx-xx-xxxx";
+            for (int n : arr) {
+                resultNumber = resultNumber.replaceFirst("x", n + "");
+            }
+        } else if (arr.length == 14) {
+            resultNumber = "x(xxx)xxx-xx-xxxxx";
+            for (int n : arr) {
+                resultNumber = resultNumber.replaceFirst("x", n + "");
+            }
+        } else if (arr.length == 15) {
+            resultNumber = "x(xxx)xxx-xx-xxxxxx";
+            for (int n : arr) {
+                resultNumber = resultNumber.replaceFirst("x", n + "");
+            }
+        }
 
         return new String[]{resultNumber, resultCountry};
     }

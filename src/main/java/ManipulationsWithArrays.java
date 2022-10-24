@@ -7,31 +7,30 @@ public class ManipulationsWithArrays {
             return new int[0];
         }
 
-        int resultArrLength = (arr.length % 2 == 0
-                ? arr.length / 2
-                : (arr.length - 1) / 2 ); // без центрального индекса
+        int resultArrLength = (int)arr.length/ 2; // без центрального индекса
 
         int[] resultArr = new int[resultArrLength];
         int leftSum = 0;
         int rightSum = 0;
-        int j = arr.length - 1;
+        //[0 1 2 3 4 5 6 7 8]
 
-        for (int i = 0; i < resultArrLength; i++, j--) {
+        for (int i = 0, j = arr.length - 1; i < resultArrLength; i++) {
             leftSum += arr[i];
             rightSum += arr[j];
+            j--;
         }
 
         if (leftSum > rightSum) {
             for (int i = 0; i < resultArrLength; i++) {
                 resultArr[i] = arr[i];
             }
-        }else {
-            int oddArrAdd = (arr.length % 2 == 0
-                    ? 0
-                    : 1); //
+        }else if (leftSum <= rightSum) {
+//            int oddArrAdd = (arr.length % 2 == 0
+//                    ? 0
+//                    : 1); //
 
-            for (int i = arr.length - resultArrLength; i < arr.length; i++) {
-                resultArr[i - resultArrLength - oddArrAdd] = arr[i];
+            for (int i = arr.length - resultArrLength, j = 0; i < arr.length; i++, j++) {
+                resultArr[j] = arr[i];
             }
         }
 

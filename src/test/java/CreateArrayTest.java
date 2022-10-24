@@ -50,6 +50,7 @@ public class CreateArrayTest {
 
         int[] expectedResult = {3, 4, 1, 8, 10, 12};
 
+
         int[] actualResult = CreateArray.createIntArrayFromText(s);
 
         Assert.assertEquals(actualResult, expectedResult);
@@ -167,5 +168,16 @@ public class CreateArrayTest {
         Assert.assertEquals(actualResult, expectedResult);
     }
 
+    @Test
+    public void testGetPhoneNumberAndCountry_UnitedKingdom_HappyPath() {
+
+        int[] arr = new int[]{4, 4, 7, 4, 2, 9, 6, 6, 3, 7, 7};
+
+        String[] expectedResult = {"4(474)296-63-77", "United Kingdom"};
+
+        String[] actualResult = CreateArray.getPhoneNumberAndCountry(arr);
+
+        Assert.assertEquals(actualResult, expectedResult);
+    }
 }
 

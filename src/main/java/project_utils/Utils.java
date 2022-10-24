@@ -95,13 +95,13 @@ public class Utils {
         int[] resultArr = new int[countOddInArray(arr)];
         int resultArrIndex = 0;
 
-        for (int i : arr
-        ) {
+        for (int i = 0; i < arr.length; i++) {
             if (i % 2 != 0) {
-                resultArr[resultArrIndex] = i;
+                resultArr[resultArrIndex] = arr[i];
                 resultArrIndex++;
             }
         }
+
         return resultArr;
     }
 
