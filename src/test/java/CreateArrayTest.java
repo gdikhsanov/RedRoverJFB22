@@ -99,7 +99,7 @@ public class CreateArrayTest {
     @Test
     public void testGetPhoneNumberAndCountry_USA_HappyPath() {
 
-         int[] arr = new int[]{1, 8, 0, 0, 1, 2, 3, 4, 5, 6, 7};
+        int[] arr = new int[]{1, 8, 0, 0, 1, 2, 3, 4, 5, 6, 7};
 
         String[] expectedResult = {"1(800)123-45-67", "United States of America"};
 
@@ -111,7 +111,7 @@ public class CreateArrayTest {
     @Test
     public void testGetPhoneNumberAndCountry_Canada_HappyPath() {
 
-         int[] arr = new int[]{1, 8, 0, 7, 1, 2, 3, 4, 5, 6, 7};
+        int[] arr = new int[]{1, 8, 0, 7, 1, 2, 3, 4, 5, 6, 7};
 
         String[] expectedResult = {"1(807)123-45-67", "Canada"};
 
@@ -123,7 +123,7 @@ public class CreateArrayTest {
     @Test
     public void testGetPhoneNumberAndCountry_Kazakhstan_HappyPath() {
 
-         int[] arr = new int[]{7, 7, 7, 7, 1, 2, 3, 4, 5, 6, 7};
+        int[] arr = new int[]{7, 7, 7, 7, 1, 2, 3, 4, 5, 6, 7};
 
         String[] expectedResult = {"7(777)123-45-67", "Kazakhstan"};
 
@@ -135,7 +135,7 @@ public class CreateArrayTest {
     @Test
     public void testGetPhoneNumberAndCountry_Russia_HappyPath() {
 
-         int[] arr = new int[]{7, 9, 1, 3, 9, 2, 3, 4, 5, 6, 7};
+        int[] arr = new int[]{7, 9, 1, 3, 9, 2, 3, 4, 5, 6, 7};
 
         String[] expectedResult = {"7(913)923-45-67", "Russia"};
 
@@ -145,9 +145,45 @@ public class CreateArrayTest {
     }
 
     @Test
-    public void testGetPhoneNumberAndCountry_OutOfBounds_Negative() {
+    public void testGetPhoneNumberAndCountry_UnitedKingdom12Digits_HappyPath() {
 
-         int[] arr = new int[]{99, 9, 1, 3, 9, 2, 3, 4, 5, 6, 7};
+        int[] arr = new int[]{4, 4, 7, 4, 2, 9, 6, 6, 3, 7, 7, 3};
+
+        String[] expectedResult = {"4(474)296-63-773", "United Kingdom"};
+
+        String[] actualResult = CreateArray.getPhoneNumberAndCountry(arr);
+
+        Assert.assertEquals(actualResult, expectedResult);
+    }
+
+    @Test
+    public void testGetPhoneNumberAndCountry_Satellite5DigitPrefix17DigitsNumber_HappyPath() {
+
+        int[] arr = new int[]{8, 8, 2, 1, 6, 9, 6, 6, 3, 7, 7, 3, 6, 3, 7, 7, 3};
+
+        String[] expectedResult = {"8(821)696-63-77363773", "Thuraya (Mobile Satellite service)"};
+
+        String[] actualResult = CreateArray.getPhoneNumberAndCountry(arr);
+
+        Assert.assertEquals(actualResult, expectedResult);
+    }
+
+    @Test
+    public void testGetPhoneNumberAndCountry_OutOfBoundsDigit_Negative() {
+
+        int[] arr = new int[]{99, 9, 1, 3, 9, 2, 3, 4, 5, 6, 7};
+
+        String[] expectedResult = {"Error"};
+
+        String[] actualResult = CreateArray.getPhoneNumberAndCountry(arr);
+
+        Assert.assertEquals(actualResult, expectedResult);
+    }
+
+    @Test
+    public void testGetPhoneNumberAndCountry_OutOfBoundsLength18_Negative() {
+
+        int[] arr = new int[]{8, 8, 2, 1, 6, 9, 6, 6, 3, 7, 7, 3, 6, 3, 7, 7, 3, 9};
 
         String[] expectedResult = {"Error"};
 
@@ -159,7 +195,7 @@ public class CreateArrayTest {
     @Test
     public void testGetPhoneNumberAndCountry_SmallArr_Negative() {
 
-         int[] arr = new int[]{9, 7};
+        int[] arr = new int[]{9, 7};
 
         String[] expectedResult = {"Error"};
 
@@ -168,16 +204,5 @@ public class CreateArrayTest {
         Assert.assertEquals(actualResult, expectedResult);
     }
 
-    @Test
-    public void testGetPhoneNumberAndCountry_UnitedKingdom_HappyPath() {
-
-        int[] arr = new int[]{4, 4, 7, 4, 2, 9, 6, 6, 3, 7, 7};
-
-        String[] expectedResult = {"4(474)296-63-77", "United Kingdom"};
-
-        String[] actualResult = CreateArray.getPhoneNumberAndCountry(arr);
-
-        Assert.assertEquals(actualResult, expectedResult);
-    }
 }
 
