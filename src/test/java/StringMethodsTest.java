@@ -354,6 +354,18 @@ public class StringMethodsTest {
         Assert.assertEquals(actualResult, expectedResult);
     }
 
+    @Test
+    public void testStartEnd_Null_Negative() {
+
+        String a = null;
+
+        boolean expectedResult = false;
+
+        boolean actualResult = StringMethods.startEnd(a);
+
+        Assert.assertEquals(actualResult, expectedResult);
+    }
+
     //9.12
     @Test
     public void testSecondWord_HappyPath() {

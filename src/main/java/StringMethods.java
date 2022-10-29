@@ -1,7 +1,7 @@
 public class StringMethods {
     //9.1
     public static String removeSpaces(String s) {
-        if (s.isEmpty()) { // Проверка на null избыточна, т.к. встроена в String
+        if (s == null || s.isEmpty()) {
             return "Строка пустая";
         } else if (s.trim().equals(s)) {
             return "Пробелов не было";
@@ -13,7 +13,7 @@ public class StringMethods {
 
     //9.2
     public static String removeAllAs(String s) {
-        if (s.isEmpty()) { // Проверка на null избыточна, т.к. встроена в String
+        if (s == null || s.isEmpty()) {
 
             return "Строка пустая";
         } else {
@@ -24,7 +24,7 @@ public class StringMethods {
 
     //9.3
     public static String removeAllZeros(String s) {
-        if (s.isEmpty()) { // Проверка на null избыточна, т.к. встроена в String
+        if (s == null || s.isEmpty()) {
 
             return "Строка пустая";
         }
@@ -43,7 +43,7 @@ public class StringMethods {
     //9.4
 
     public static String removeAllSpaces(String s) {
-        if (s.isEmpty()) { // Проверка на null избыточна, т.к. встроена в String
+        if (s == null || s.isEmpty()) {
 
             return "Строка пустая";
         }
@@ -53,7 +53,7 @@ public class StringMethods {
 //9.5
 
     public static String countAs(String s) {
-        if (s.isEmpty()) { // Проверка на null избыточна, т.к. встроена в String
+        if (s == null || s.isEmpty()) {
 
             return "Строка пустая";
         }
@@ -62,25 +62,28 @@ public class StringMethods {
 
 
         for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) == 'a' || s.charAt(i) == 'A') {
+            if (s.trim().toLowerCase().charAt(i) == 'a') {
                 counter++;
             }
         }
 
-        return String.valueOf(counter).concat(", ").concat(String.valueOf(s.length() - counter));
+        return String.valueOf(counter).concat(", ").concat(String.valueOf(s.trim().length() - counter));
     }
 
 //9.6
 
-    public static Boolean countJava(String s) { // Проверка на null и пустую избыточна, т.к. встроена в String
+    public static Boolean countJava(String s) {
+        if (s == null || s.isEmpty()) {
 
+            return false;
+        }
         return s.contains("Java");
     }
 
     //9.7
 
     public static String insertQuotes(String s) {
-        if (s.isEmpty()) { // Проверка на null избыточна, т.к. встроена в String
+        if (s == null || s.isEmpty()) {
 
             return "";
         }
@@ -91,7 +94,7 @@ public class StringMethods {
 //9.8.1
 
     public static String insertQuotes(String a, String b) {
-        if (a.isEmpty() || b.isEmpty()) { // Проверка на null избыточна, т.к. встроена в String
+        if (a.isEmpty() || b.isEmpty()) {
 
             return "";
         } else if (a.contains("писал")) {
@@ -106,7 +109,7 @@ public class StringMethods {
 //9.8.2
 
     public static String insertQuotes1(String a, String b) {
-        if (a.isEmpty() || b.isEmpty()) { // Проверка на null избыточна, т.к. встроена в String
+        if (a.isEmpty() || b.isEmpty()) {
 
             return "";
         } else if (a.contains("писал")) {
@@ -121,7 +124,7 @@ public class StringMethods {
 //9.9
 
     public static String city(String s) {
-        if (s.isEmpty()) { // Проверка на null избыточна, т.к. встроена в String
+        if (s == null || s.isEmpty()) {
 
             return "";
         }
@@ -131,7 +134,7 @@ public class StringMethods {
 //9.10
 
     public static String betweenLetters(String s, String letter) {
-        if (s.isEmpty() || !(letter.matches("[a-z]") || letter.matches("[A-Z]")
+        if (s == null || s.isEmpty() || !(letter.matches("[a-z]") || letter.matches("[A-Z]")
                 || letter.matches("[а-я]") || letter.matches("[А-Я]"))) {
 
             return "";
@@ -143,30 +146,31 @@ public class StringMethods {
 
     public static boolean startEnd(String s) {
 
-        return s.isEmpty() || s.toLowerCase().charAt(0) == s.toLowerCase().charAt(s.length() - 1);
+        //return s == null || s.isEmpty() || s.toLowerCase().charAt(0) == s.toLowerCase().charAt(s.length() - 1);
+        if ( s == null || s.isEmpty() ) {
+            return false;
+        }
+        return s.toLowerCase().lastIndexOf(s.toLowerCase().charAt(0)) == s.length() - 1;
     }
 
 //9.12
 
     public static String secondWord(String s) {
-        s = s.trim(); // IndexOf не учитывает trim, потому заранее стрижем
-
-        if (!s.contains(" ") || s.indexOf(" ") != s.lastIndexOf(" ")) {
-            // Проверка на null и пустую избыточна, т.к. встроена в String
+        if (s == null || s.isEmpty() || !s.trim().contains(" ") || s.trim().indexOf(" ") != s.trim().lastIndexOf(" ")) {
             // Проверяем, что после обрезки крайних пробелов, внутренний пробел только один.
-
             return "";
         }
 
-        return s.substring(s.indexOf(" ") + 1);
+        return s.trim().substring(s.trim().indexOf(" ") + 1);
     }
+
 
     //9.13
     //Написать метод, который принимает строку, и 2 индекса. Метод удаляет все, что находится между двумя индексами включительно
     //Test Data:
     //“Red rover”, 1, 4 → “Rover”
     public static String deleteBetween(String s, int a, int b) {
-        if (s.length() <= 1 || (a + b) < 0 || a > s.length() - 1 || b > s.length() - 1) {
+        if (s == null || s.isEmpty() || s.length() <= 1 || (a + b) < 0 || a > s.length() - 1 || b > s.length() - 1) {
             //при длине 1, удаляет сам себя.
             //валидируем индексы - не больше границ
 
@@ -186,7 +190,7 @@ public class StringMethods {
     //9.14
 
     public static String[] toArray(String s) {
-        if (s.length() == 0) {
+        if (s == null || s.length() == 0) {
 
             return new String[0];
         }
@@ -197,7 +201,7 @@ public class StringMethods {
 //9.15
 
     public static String fullName(String s) {
-        if (s.length() == 0) {
+        if (s == null || s.length() == 0) {
 
             return "";
         }
@@ -216,7 +220,7 @@ public class StringMethods {
 //9.16
 
     public static String repeat(String s, int a) {
-        if (s.length() == 0 || a <= 0 || s.trim().contains(" ")) { //только одно слово, коэфициент больше нуля
+        if (s == null || s.length() == 0 || a <= 0 || s.trim().contains(" ")) { //только одно слово, коэфициент больше нуля
 
             return "";
         }
@@ -226,7 +230,7 @@ public class StringMethods {
 //9.16
 
     public static int letterNumAtIndex(String s, int a) {
-        if (s.length() == 0 || a < 0 || a > s.length() - 1) { //коэфициент больше нуля
+        if (s == null || s.length() == 0 || a < 0 || a > s.length() - 1) { //коэфициент больше нуля
 
             return -1;
         }
@@ -239,7 +243,7 @@ public class StringMethods {
     // НО,  можно было бы без валидации на одно слово. Т.к. даже если несколько слов
     // будет странно, если одинаковые строки с внутренними пробелами будут false
     public static boolean compareOfThree(String a, String b, String c) {
-        if ((a.length() == 0 && b.length() == 0 && c.length() == 0) //Пустая строка не слово, но они равны :)
+        if ((a == null || b == null || a.length() == 0 && b.length() == 0 && c.length() == 0) //Пустая строка не слово, но они равны :)
                 || ((a.trim().equalsIgnoreCase(b.trim()) && a.trim().equalsIgnoreCase(c.trim())) // сравниваем строки после обрезки
                 && !(a.trim().contains(" ") || b.trim().contains(" ") || c.trim().contains(" ")))) { // Валидация на одно слово
 
